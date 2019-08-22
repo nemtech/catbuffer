@@ -1,22 +1,15 @@
+import "mosaic/mosaic_types.cats"
 import "transaction.cats"
-
-# supply change directions
-enum MosaicSupplyChangeDirection : uint8
-	# decreases the supply
-	decrease = 0
-
-	# increases the supply
-	increase = 1
 
 # binary layout for a mosaic supply change transaction
 struct MosaicSupplyChangeTransactionBody
-	# id of the affected mosaic
+	# affected mosaic identifier
 	mosaicId = UnresolvedMosaicId
 
-	# supply change direction
-	direction = MosaicSupplyChangeDirection
+	# supply change action
+	action = MosaicSupplyChangeAction
 
-	# amount of the change
+	# change amount
 	delta = Amount
 
 # binary layout for a non-embedded mosaic supply change transaction

@@ -1,45 +1,13 @@
+import "mosaic/mosaic_types.cats"
 import "transaction.cats"
-
-using MosaicNonce = uint32
-
-# mosaic property flags
-enum MosaicFlags : uint8
-	# no flags present
-	none = 0x00
-
-	# mosaic supports supply changes even when mosaic owner owns partial supply
-	supplyMutable = 0x01
-
-	# mosaic supports transfers between arbitrary accounts
-	# \note when not set, mosaic can only be transferred to and from mosaic owner
-	transferable = 0x02
-
-	# mosaic supports custom restrictions configured by mosaic owner
-	restrictable = 0x04
-
-# available mosaic property ids
-enum MosaicPropertyId : uint8
-	# mosaic duration
-	duration = 2
-
-# mosaic property compose of an id and a value
-struct MosaicProperty
-	# mosaic property id
-	id = MosaicPropertyId
-
-	# mosaic property value
-	value = uint64
 
 # binary layout for a mosaic definition transaction
 struct MosaicDefinitionTransactionBody
 	# mosaic nonce
-	mosaicNonce = MosaicNonce
+	nonce = MosaicNonce
 
-	# id of the mosaic
-	mosaicId = MosaicId
-
-	# number of elements in optional properties
-	propertiesCount = uint8
+	# mosaic identifier
+	id = MosaicId
 
 	# mosaic flags
 	flags = MosaicFlags
@@ -47,8 +15,8 @@ struct MosaicDefinitionTransactionBody
 	# mosaic divisibility
 	divisibility = uint8
 
-	# optional properties
-	properties = array(MosaicProperty, propertiesCount, sort_key=id)
+	# mosaic duration
+	duration = BlockDuration
 
 # binary layout for a non-embedded mosaic definition transaction
 struct MosaicDefinitionTransaction

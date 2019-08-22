@@ -1,4 +1,4 @@
-import "restriction_mosaic/mosaic_restriction_types.cats"
+import "restriction_mosaic/restriction_mosaic_types.cats"
 import "transaction.cats"
 
 # binary layout for a mosaic global restriction transaction
@@ -9,7 +9,7 @@ struct MosaicGlobalRestrictionTransactionBody
 	# identifier of the mosaic providing the restriction key
 	referenceMosaicId = UnresolvedMosaicId
 
-	# restriction key relative to the reference mosaic id
+	# restriction key relative to the reference mosaic identifier
 	restrictionKey = uint64
 
 	# previous restriction value

@@ -1,17 +1,17 @@
 using NamespaceId = uint64
 
-# namespace types
-enum NamespaceType : uint8
-	# a root namespace
-	root = 0
+# enumeration of namespace registration types
+enum NamespaceRegistrationType : uint8
+	# root namespace
+	root = 0x00
 
-	# a child namespace
-	child = 1
+	# child namespace
+	child = 0x01
 
-# alias transaction action
+# enumeration of alias actions
 enum AliasAction : uint8
-	# link alias
-	link = 0
-
 	# unlink alias
-	unlink = 1
+	unlink = 0x00
+
+	# link alias
+	link = 0x01

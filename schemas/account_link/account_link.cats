@@ -1,17 +1,10 @@
+import "account_link/account_link_types.cats"
 import "transaction.cats"
-
-# account link transaction action
-enum AccountLinkAction : uint8
-	# link account
-	link = 0
-
-	# unlink account
-	unlink = 1
 
 # binary layout for an account link transaction
 struct AccountLinkTransactionBody
-	# remote account key
-	remoteAccountKey = Key
+	# remote account public key
+	remoteAccountPublicKey = Key
 
 	# account link action
 	linkAction = AccountLinkAction

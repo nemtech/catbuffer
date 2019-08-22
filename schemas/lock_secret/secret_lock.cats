@@ -1,21 +1,21 @@
-import "lock_secret/lock_hash_algorithm.cats"
+import "lock_secret/lock_secret_types.cats"
 import "transaction.cats"
 
 # binary layout for a secret lock transaction
 struct SecretLockTransactionBody
-	# lock mosaic
+	# locked mosaic
 	mosaic = UnresolvedMosaic
 
 	# number of blocks for which a lock should be valid
 	duration = BlockDuration
 
-	# hash alghoritm
+	# hash algorithm
 	hashAlgorithm = LockHashAlgorithm
 
 	# secret
 	secret = Hash256
 
-	# recipient of the locked mosaic
+	# locked mosaic recipient
 	recipient = UnresolvedAddress
 
 # binary layout for a non-embedded secret lock transaction
