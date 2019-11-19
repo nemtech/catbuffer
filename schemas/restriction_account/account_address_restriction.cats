@@ -3,14 +3,23 @@ import "transaction.cats"
 
 # binary layout for an account address restriction transaction
 struct AccountAddressRestrictionTransactionBody
-	# account restriction type
-	restrictionType = AccountRestrictionType
+	# account restriction flags
+	restrictionFlags = AccountRestrictionFlags
 
-	# number of modifications
-	modificationsCount = uint8
+	# number of account restriction additions
+	restrictionAdditionsCount = uint8
 
-	# account restriction modifications
-	modifications = array(AccountAddressRestrictionModification, modificationsCount)
+	# number of account restriction deletions
+	restrictionDeletionsCount = uint8
+
+	# reserved padding to align restrictionAdditions on 8-byte boundary
+	accountRestrictionTransactionBody_Reserved1 = uint32
+
+	# account restriction additions
+	restrictionAdditions = array(UnresolvedAddress, restrictionAdditionsCount)
+
+	# account restriction deletions
+	restrictionDeletions = array(UnresolvedAddress, restrictionDeletionsCount)
 
 # binary layout for a non-embedded account address restriction transaction
 struct AccountAddressRestrictionTransaction

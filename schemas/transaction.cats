@@ -12,7 +12,14 @@ struct Transaction
 	# transaction deadline
 	deadline = Timestamp
 
+# binary layout for an embedded transaction header
+struct EmbeddedTransactionHeader
+	inline SizePrefixedEntity
+
+	# reserved padding to align end of EmbeddedTransactionHeader on 8-byte boundary
+	embeddedTransactionHeader_Reserved1 = uint32
+
 # binary layout for an embedded transaction
 struct EmbeddedTransaction
-	inline SizePrefixedEntity
+	inline EmbeddedTransactionHeader
 	inline EntityBody
